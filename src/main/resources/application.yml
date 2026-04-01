@@ -1,0 +1,24 @@
+spring:
+  threads:
+    virtual:
+      enabled: true
+  datasource:
+    # 'db' deve ser o nome do serviço no seu docker-compose.yml
+    url: jdbc:postgresql://db:5432/poc_db
+    driver-class-name: org.postgresql.Driver
+    username: password
+    password: password
+  jpa:
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
+    hibernate:
+      # 'update' cria as tabelas automaticamente. Use 'validate' em produção.
+      ddl-auto: update
+    show-sql: true
+    properties:
+      hibernate:
+        format_sql: true
+    open-in-view: false
+  # Removido h2 console pois não se aplica ao Postgres
+  mvc:
+    problemdetails:
+      enabled: true
